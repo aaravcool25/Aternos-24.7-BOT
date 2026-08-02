@@ -210,7 +210,7 @@ function stopBot(message) {
   clearReconnectTimer();
   if (bot) {
     try {
-      bot.end(message || 'Bye');
+      bot.end(); // Fixed: Removed message argument
     } catch (err) {
       console.error('Error quitting bot:', err.message);
     }
@@ -227,8 +227,7 @@ function reconnectBot() {
   io.emit('bot_status', 'Reconnecting bot...');
   if (bot) {
     try {
-      bot.end
-      ('Reconnecting');
+      bot.end(); // Fixed: Unified multi-line bug and removed argument
     } catch (err) {
       console.error('Error during manual reconnect:', err.message);
     }
