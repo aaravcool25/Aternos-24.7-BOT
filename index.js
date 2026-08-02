@@ -210,7 +210,7 @@ function stopBot(message) {
   clearReconnectTimer();
   if (bot) {
     try {
-      bot.quit(message || 'Bye');
+      bot.end(message || 'Bye');
     } catch (err) {
       console.error('Error quitting bot:', err.message);
     }
@@ -227,7 +227,8 @@ function reconnectBot() {
   io.emit('bot_status', 'Reconnecting bot...');
   if (bot) {
     try {
-      bot.quit('Reconnecting');
+      bot.end
+      ('Reconnecting');
     } catch (err) {
       console.error('Error during manual reconnect:', err.message);
     }
